@@ -66,7 +66,8 @@
     "react-router-dom": "^6.14.2",
     "reactflow": "^11.7.4",
     "single-spa": "^5.9.5",
-    "single-spa-react": "^4.3.1"
+    "single-spa-react": "^4.3.1",
+    "uuid": "^9.0.0"
   },
   "types": "dist/seawolf-tank-diagram-dashboard-plugin.d.ts"
 }

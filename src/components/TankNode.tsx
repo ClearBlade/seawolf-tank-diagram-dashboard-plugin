@@ -1,20 +1,7 @@
-import { makeStyles } from '@material-ui/core';
+import { Theme, makeStyles } from '@material-ui/core';
 import { memo } from 'react';
-import { Handle, Position } from 'reactflow';
 
-const TankNode = () => {
-  return (
-    <>
-      <Handle type='target' position={Position.Top} />
-      <TankShape />
-      <Handle type='source' position={Position.Left} />
-    </>
-  );
-};
-
-export default memo(TankNode);
-
-const useTankStyles = makeStyles((theme) => ({
+const useTankStyles = makeStyles<Theme, { fitWidth?: boolean }>((theme) => ({
   topOval: {
     border: `1px solid ${theme.palette.text.secondary}`,
     width: '100%',
@@ -44,23 +31,35 @@ const useTankStyles = makeStyles((theme) => ({
     zIndex: 3,
     boxShadow: theme.shadows[1],
   },
-  container: {
+  container: ({ fitWidth }) => ({
     height: '130px',
-    width: '115px',
+    width: fitWidth ? '115px' : '150px',
     display: 'flex',
     alignItems: 'center',
-  },
+    justifyContent: 'center',
+  }),
 }));
 
-const TankShape = () => {
-  const classes = useTankStyles();
+const TankNode = ({
+  handles,
+  fitWidth,
+}: {
+  handles?: React.ReactNode;
+  fitWidth?: boolean;
+}) => {
+  const classes = useTankStyles({ fitWidth });
 
   return (
-    <div className={classes.container}>
-      <div className={classes.rectangle}>
-        <div className={classes.topOval}></div>
-        <div className={classes.bottomOval}></div>
+    <>
+      <div className={classes.container}>
+        <div className={classes.rectangle}>
+          <div className={classes.topOval}></div>
+          <div className={classes.bottomOval}></div>
+        </div>
       </div>
-    </div>
+      {handles}
+    </>
   );
 };
+
+export default memo(TankNode);

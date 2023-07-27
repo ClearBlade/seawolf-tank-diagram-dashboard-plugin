@@ -1,9 +1,9 @@
 import { makeStyles } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
-import React, { useEffect, useRef, useState } from 'react';
-import ReactFlow from 'reactflow';
-
+import ReactFlow, { Handle, Position } from 'reactflow';
 import 'reactflow/dist/style.css';
+import { useFetchAssetsByIds } from '../api';
+import { allNodes, assetIds, edges } from '../utils';
 import TankNode from './TankNode';
 import TextNode from './TextNode';
 
@@ -17,39 +17,64 @@ const usePluginStyles = makeStyles((theme) => ({
 
 export default function DashboardPlugin() {
   const classes = usePluginStyles();
+  const { data, isLoading, error } = useFetchAssetsByIds(assetIds);
 
-  const hardcodedisloading = false; //GET BACK TO THESE BASED ON REACT QUERY FETCHES
-  const hardcodederror = false;
-
-  if (hardcodedisloading) return <Skeleton />;
-  if (hardcodederror) return <div>Error</div>;
+  if (isLoading) return <Skeleton />;
+  if (error) return <div>Error</div>;
+  console.log('data', data);
 
   const nodeTypes = {
-    tankNode: TankNode,
+    tankNodeTop: (props) => (
+      <TankNode
+        {...props}
+        handles={
+          <>
+            <Handle type='target' position={Position.Top} />
+          </>
+        }
+      />
+    ),
+    tankNodeLeftBottom: (props) => (
+      <TankNode
+        {...props}
+        fitWidth
+        handles={
+          <>
+            <Handle type='target' position={Position.Left} />
+            <Handle type='source' position={Position.Bottom} />
+          </>
+        }
+      />
+    ),
     textNode: TextNode,
+    blankNode: (props) => (
+      <div {...props} style={{ height: '10px', width: '10px' }}>
+        <Handle type='source' position={Position.Right} />
+      </div>
+    ),
+    textNodeTopBottom: (props) => (
+      <TextNode
+        {...props}
+        handles={
+          <>
+            <Handle type='target' position={Position.Top} />
+            <Handle type='source' position={Position.Bottom} />
+          </>
+        }
+      />
+    ),
+    textNodeLeftRight: (props) => (
+      <TextNode
+        {...props}
+        handles={
+          <>
+            <Handle type='target' position={Position.Left} />
+            <Handle type='source' position={Position.Right} />
+          </>
+        }
+      />
+    ),
   };
-
-  const nodes = [
-    {
-      id: '1',
-      type: 'textNode',
-      position: { x: 0, y: 0 },
-      data: { label: 'MY LABEL1' },
-    },
-    {
-      id: '2',
-      type: 'textNode',
-      position: { x: 200, y: 0 },
-      data: { label: 'MY LABEL2' },
-    },
-    {
-      id: '3',
-      type: 'tankNode',
-      position: { x: 400, y: 0 },
-      data: { label: '' },
-    },
-  ];
-  const edges = [{ id: 'e1-2', source: '1', target: '2' }];
 
   return (
     <div className={classes.plugin}>
@@ -63,9 +88,10 @@ export default function DashboardPlugin() {
           nodesDraggable={false}
           nodesConnectable={false}
           nodesFocusable={false}
-          nodes={nodes}
+          nodes={allNodes}
           edges={edges}
           nodeTypes={nodeTypes}
+          fitView={true}
         />
       </div>
     </div>

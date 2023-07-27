@@ -1,23 +1,31 @@
-import { Card, makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import { memo } from 'react';
-import { Handle, Position } from 'reactflow';
 
 const useTextNodeStyles = makeStyles((theme) => ({
   textCard: {
     padding: theme.spacing(2),
-    width: '100px',
-    height: '100px',
+    width: '150px',
+    height: '130px',
     display: 'flex',
+    border: `1px solid ${theme.palette.text.secondary}`,
+    backgroundColor: theme.palette.background.paper,
+    borderRadius: theme.shape.borderRadius,
+    boxShadow: theme.shadows[1],
   },
 }));
 
-const TextNode = ({ data }: { data: { label: string } }) => {
+const TextNode = ({
+  data,
+  handles,
+}: {
+  data: { label: string };
+  handles?: React.ReactNode;
+}) => {
   const classes = useTextNodeStyles();
   return (
     <>
-      <Handle type='target' position={Position.Top} />
-      <Card className={classes.textCard}>{data.label}</Card>
-      <Handle type='source' position={Position.Left} />
+      <div className={classes.textCard}>{data.label}</div>
+      {handles}
     </>
   );
 };
