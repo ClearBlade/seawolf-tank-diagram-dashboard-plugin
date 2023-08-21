@@ -1,13 +1,12 @@
+import { useAssetTypesCache } from '@clearblade/ia-mfe-react';
 import { makeStyles } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import ReactFlow, { Handle, Position } from 'reactflow';
-import 'reactflow/dist/style.css';
 import { useFetchAssetsByIds } from '../api';
-import { allNodes, assetIds, edges } from '../utils';
+import { NodeTypes, allNodes, assetIds, edges } from '../utils';
 import TankNode from './TankNode';
 import TextNode from './TextNode';
-import { NodeTypes } from '../utils';
-import { useAssetTypesCache } from '@clearblade/ia-mfe-react';
+import 'reactflow/dist/style.css';
 
 const usePluginStyles = makeStyles((theme) => ({
   plugin: {

@@ -30,13 +30,14 @@ export const AssetLabel = ({
   const asset = assets[assetId];
   const alarmStatus = asset?.custom_data?.['Alarm_Status'];
   const hasAlarm = alarmStatus && alarmStatus !== 'No Alarm';
+
   return (
     <Grid item>
       <Link to={`/assets/detail/${assetId}`} className={classes.link}>
         <Typography
           variant='body2'
           className={classes.text}
-          color={hasAlarm ? 'error' : 'primary'}
+          color={hasAlarm ? 'error' : 'secondary'}
         >
           <b>{asset?.label}</b>
           {hasAlarm && (
