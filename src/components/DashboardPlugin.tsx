@@ -6,6 +6,8 @@ import { useFetchAssetsByIds } from '../api';
 import { allNodes, assetIds, edges } from '../utils';
 import TankNode from './TankNode';
 import TextNode from './TextNode';
+import { NodeTypes } from '../utils';
+import { useAssetTypesCache } from '@clearblade/ia-mfe-react';
 
 const usePluginStyles = makeStyles((theme) => ({
   plugin: {
@@ -17,14 +19,24 @@ const usePluginStyles = makeStyles((theme) => ({
 
 export default function DashboardPlugin() {
   const classes = usePluginStyles();
-  const { data, isLoading, error } = useFetchAssetsByIds(assetIds);
+  const {
+    data: assetsData,
+    isLoading: loadingAssets,
+    error: errorAssets,
+  } = useFetchAssetsByIds(assetIds);
+  const {
+    data: assetTypeData,
+    isLoading: loadingAssetTypes,
+    error: errorAssetTypes,
+  } = useAssetTypesCache();
 
-  if (isLoading) return <Skeleton />;
-  if (error) return <div>Error</div>;
-  console.log('data', data);
+  if (loadingAssets || loadingAssetTypes) return <Skeleton />;
+  if (errorAssets || errorAssetTypes) return <div>Error</div>;
+  console.log('assetsData', assetsData.DATA);
+  console.log('assetTypeData', assetTypeData.DATA);
 
   const nodeTypes = {
-    tankNodeTop: (props) => (
+    [NodeTypes.tankNodeTop]: (props) => (
       <TankNode
         {...props}
         handles={
@@ -34,7 +46,7 @@ export default function DashboardPlugin() {
         }
       />
     ),
-    tankNodeLeftBottom: (props) => (
+    [NodeTypes.tankNodeLeftBottom]: (props) => (
       <TankNode
         {...props}
         fitWidth
@@ -46,13 +58,13 @@ export default function DashboardPlugin() {
         }
       />
     ),
-    textNode: TextNode,
-    blankNode: (props) => (
+    [NodeTypes.textNode]: TextNode,
+    [NodeTypes.blankNode]: (props) => (
       <div {...props} style={{ height: '10px', width: '10px' }}>
         <Handle type='source' position={Position.Right} />
       </div>
     ),
-    textNodeTopBottom: (props) => (
+    [NodeTypes.textNodeTopBottom]: (props) => (
       <TextNode
         {...props}
         handles={
@@ -63,7 +75,7 @@ export default function DashboardPlugin() {
         }
       />
     ),
-    textNodeLeftRight: (props) => (
+    [NodeTypes.textNodeLeftRight]: (props) => (
       <TextNode
         {...props}
         handles={
@@ -75,6 +87,8 @@ export default function DashboardPlugin() {
       />
     ),
   };
+
+  const nodes = allNodes(assetsData.DATA, assetTypeData.DATA);
 
   return (
     <div className={classes.plugin}>
@@ -88,7 +102,7 @@ export default function DashboardPlugin() {
           nodesDraggable={false}
           nodesConnectable={false}
           nodesFocusable={false}
-          nodes={allNodes}
+          nodes={nodes}
           edges={edges}
           nodeTypes={nodeTypes}
           fitView={true}

@@ -1,145 +1,190 @@
 import { MarkerType } from 'reactflow';
 import { v4 as uuid } from 'uuid';
+import { NodeTypes } from './nodeTypes';
+import { Asset, AssetType } from '@clearblade/ia-mfe-core';
+import { CbDictionary } from '../types';
+import { Grid, Typography } from '@material-ui/core';
+import { AttributeValues } from '../components/AttributeValues';
+import { AssetLabel } from '../components/AssetLabel';
 
 const centerHo = 470;
 const levelGap = 200;
 const horizGap = 200;
 const miniGap = 130;
 
-const levelOneNodes = [
+const levelOneNodes = (
+  assets: CbDictionary<string, Asset['frontend']>,
+  assetTypeDict: CbDictionary<string, AssetType['frontend']>
+) => [
   {
     id: '1-0',
     position: { x: 0, y: 0 },
     data: { label: '' },
-    type: 'blankNode',
+    type: NodeTypes.blankNode,
   },
   {
     id: '1-1',
     position: { x: centerHo - horizGap * 1.5, y: 0 },
-    data: { label: 'mylabel' },
-    type: 'textNodeLeftRight',
+    data: {
+      label: (
+        <Grid container direction='column'>
+          <AssetLabel assets={assets} assetId='DiverDuckAST_FIT700' />
+          <AttributeValues
+            assets={assets}
+            assetTypeDict={assetTypeDict}
+            assetId='DiverDuckAST_FIT700'
+            attributeNames={['Rate', 'Total']}
+          />
+        </Grid>
+      ),
+    },
+    type: NodeTypes.textNodeLeftRight,
   },
   {
     id: '1-2',
     position: { x: centerHo, y: 0 },
     data: { label: 'mylabel' },
-    type: 'tankNodeLeftBottom',
+    type: NodeTypes.tankNodeLeftBottom,
   },
   {
     id: '1-3',
     position: { x: centerHo + miniGap, y: 0 },
-    data: { label: 'mylabel' },
-    type: 'textNode',
+    data: {
+      label: (
+        <Grid container direction='column'>
+          <AssetLabel assets={assets} assetId='DiverDuckAST_H2S' />
+          <AttributeValues
+            assets={assets}
+            assetTypeDict={assetTypeDict}
+            assetId='DiverDuckAST_H2S'
+            attributeNames={['Alarm_Status']}
+          />
+        </Grid>
+      ),
+    },
+    type: NodeTypes.textNode,
   },
 ];
-const levelTwoNodes = [
+const levelTwoNodes = (
+  assets: CbDictionary<string, Asset['frontend']>,
+  assetTypeDict: CbDictionary<string, AssetType['frontend']>
+) => [
   {
     id: '2-1',
     position: { x: (centerHo * 2) / 3, y: levelGap },
     data: { label: 'mylabel' },
-    type: 'textNodeTopBottom',
+    type: NodeTypes.textNodeTopBottom,
   },
   {
     id: '2-2',
     position: { x: centerHo * 2 - (centerHo * 2) / 3, y: levelGap },
     data: { label: 'mylabel' },
-    type: 'textNodeTopBottom',
+    type: NodeTypes.textNodeTopBottom,
   },
 ];
-const levelThreeNodes = [
+const levelThreeNodes = (
+  assets: CbDictionary<string, Asset['frontend']>,
+  assetTypeDict: CbDictionary<string, AssetType['frontend']>
+) => [
   {
     id: '3-1',
     position: { x: centerHo - horizGap * 2, y: levelGap * 2 },
     data: { label: 'mylabel' },
-    type: 'textNodeTopBottom',
+    type: NodeTypes.textNodeTopBottom,
   },
   {
     id: '3-2',
     position: { x: centerHo - horizGap, y: levelGap * 2 },
     data: { label: 'mylabel' },
-    type: 'textNodeTopBottom',
+    type: NodeTypes.textNodeTopBottom,
   },
   {
     id: '3-3',
     position: { x: centerHo, y: levelGap * 2 },
     data: { label: 'mylabel' },
-    type: 'textNodeTopBottom',
+    type: NodeTypes.textNodeTopBottom,
   },
   {
     id: '3-4',
     position: { x: centerHo + horizGap, y: levelGap * 2 },
     data: { label: 'mylabel' },
-    type: 'textNodeTopBottom',
+    type: NodeTypes.textNodeTopBottom,
   },
   {
     id: '3-5',
     position: { x: centerHo + horizGap * 2, y: levelGap * 2 },
     data: { label: 'mylabel' },
-    type: 'textNodeTopBottom',
+    type: NodeTypes.textNodeTopBottom,
   },
 ];
-const levelFourNodes = [
+const levelFourNodes = (
+  assets: CbDictionary<string, Asset['frontend']>,
+  assetTypeDict: CbDictionary<string, AssetType['frontend']>
+) => [
   {
     id: '4-1',
     position: { x: centerHo - horizGap * 2, y: levelGap * 3 },
     data: { label: 'mylabel' },
-    type: 'textNodeTopBottom',
+    type: NodeTypes.textNodeTopBottom,
   },
   {
     id: '4-2',
     position: { x: centerHo - horizGap, y: levelGap * 3 },
     data: { label: 'mylabel' },
-    type: 'textNodeTopBottom',
+    type: NodeTypes.textNodeTopBottom,
   },
   {
     id: '4-3',
     position: { x: centerHo, y: levelGap * 3 },
     data: { label: 'mylabel' },
-    type: 'textNodeTopBottom',
+    type: NodeTypes.textNodeTopBottom,
   },
   {
     id: '4-4',
     position: { x: centerHo + horizGap, y: levelGap * 3 },
     data: { label: 'mylabel' },
-    type: 'textNodeTopBottom',
+    type: NodeTypes.textNodeTopBottom,
   },
   {
     id: '4-5',
     position: { x: centerHo + horizGap * 2, y: levelGap * 3 },
     data: { label: 'mylabel' },
-    type: 'textNodeTopBottom',
+    type: NodeTypes.textNodeTopBottom,
   },
 ];
-const levelFiveNodes = [
+const levelFiveNodes = (
+  assets: CbDictionary<string, Asset['frontend']>,
+  assetTypeDict: CbDictionary<string, AssetType['frontend']>
+) => [
   {
     id: '5-1',
     position: { x: centerHo - horizGap * 2, y: levelGap * 4 },
     data: { label: 'mylabel' },
-    type: 'tankNodeTop',
+    type: NodeTypes.tankNodeTop,
   },
   {
     id: '5-2',
     position: { x: centerHo - horizGap, y: levelGap * 4 },
     data: { label: 'mylabel' },
-    type: 'tankNodeTop',
+    type: NodeTypes.tankNodeTop,
   },
   {
     id: '5-3',
     position: { x: centerHo, y: levelGap * 4 },
     data: { label: 'mylabel' },
-    type: 'tankNodeTop',
+    type: NodeTypes.tankNodeTop,
   },
   {
     id: '5-4',
     position: { x: centerHo + horizGap, y: levelGap * 4 },
     data: { label: 'mylabel' },
-    type: 'tankNodeTop',
+    type: NodeTypes.tankNodeTop,
   },
   {
     id: '5-5',
     position: { x: centerHo + horizGap * 2, y: levelGap * 4 },
     data: { label: 'mylabel' },
-    type: 'tankNodeTop',
+    type: NodeTypes.tankNodeTop,
   },
 ];
 
@@ -326,12 +371,15 @@ export const edges = [
   },
 ];
 
-export const allNodes = [
-  ...levelOneNodes,
-  ...levelTwoNodes,
-  ...levelThreeNodes,
-  ...levelFourNodes,
-  ...levelFiveNodes,
+export const allNodes = (
+  assets: CbDictionary<string, Asset['frontend']>,
+  assetTypeDict: CbDictionary<string, AssetType['frontend']>
+) => [
+  ...levelOneNodes(assets, assetTypeDict),
+  ...levelTwoNodes(assets, assetTypeDict),
+  ...levelThreeNodes(assets, assetTypeDict),
+  ...levelFourNodes(assets, assetTypeDict),
+  ...levelFiveNodes(assets, assetTypeDict),
 ];
 
 export const assetIds = [

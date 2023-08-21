@@ -4,7 +4,7 @@ import { memo } from 'react';
 const useTextNodeStyles = makeStyles((theme) => ({
   textCard: {
     padding: theme.spacing(2),
-    width: '150px',
+    width: '170px',
     height: '130px',
     display: 'flex',
     border: `1px solid ${theme.palette.text.secondary}`,

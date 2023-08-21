@@ -33,7 +33,7 @@ const useTankStyles = makeStyles<Theme, { fitWidth?: boolean }>((theme) => ({
   },
   container: ({ fitWidth }) => ({
     height: '130px',
-    width: fitWidth ? '115px' : '150px',
+    width: fitWidth ? '115px' : '170px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
