@@ -14,11 +14,12 @@ const useTankStyles = makeStyles<Theme, { fitWidth?: boolean }>((theme) => ({
   },
   rectangle: {
     border: `1px solid ${theme.palette.text.secondary}`,
-    height: '100px',
-    width: '110px',
+    height: '115px',
+    width: '200px',
     position: 'relative',
     backgroundColor: theme.palette.background.paper,
     zIndex: 2,
+    display: 'flex',
   },
   bottomOval: {
     border: `1px solid ${theme.palette.text.secondary}`,
@@ -32,20 +33,37 @@ const useTankStyles = makeStyles<Theme, { fitWidth?: boolean }>((theme) => ({
     boxShadow: theme.shadows[1],
   },
   container: ({ fitWidth }) => ({
-    height: '130px',
-    width: fitWidth ? '115px' : '170px',
+    height: '150px',
+    width: fitWidth ? '200px' : '220px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+  }),
+  innerText: {
+    overflowY: 'hidden',
+    padding: '16% 5%',
+    width: '100%',
+    zIndex: 6,
+  },
+  outerText: ({ fitWidth }) => ({
+    width: fitWidth ? '115px' : '220px',
+    padding: '5%',
+    border: `1px solid ${theme.palette.text.secondary}`,
+    backgroundColor: theme.palette.background.paper,
+    borderRadius: theme.shape.borderRadius,
+    boxShadow: theme.shadows[1],
+    marginTop: '5%',
   }),
 }));
 
 const TankNode = ({
   handles,
   fitWidth,
+  data,
 }: {
   handles?: React.ReactNode;
   fitWidth?: boolean;
+  data?: { label: string | JSX.Element; textBox?: string | JSX.Element };
 }) => {
   const classes = useTankStyles({ fitWidth });
 
@@ -53,10 +71,12 @@ const TankNode = ({
     <>
       <div className={classes.container}>
         <div className={classes.rectangle}>
+          <div className={classes.innerText}>{data.label}</div>
           <div className={classes.topOval}></div>
           <div className={classes.bottomOval}></div>
         </div>
       </div>
+      {data.textBox && <div className={classes.outerText}>{data.textBox}</div>}
       {handles}
     </>
   );

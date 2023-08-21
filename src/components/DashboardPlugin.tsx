@@ -32,8 +32,6 @@ export default function DashboardPlugin() {
 
   if (loadingAssets || loadingAssetTypes) return <Skeleton />;
   if (errorAssets || errorAssetTypes) return <div>Error</div>;
-  console.log('assetsData', assetsData.DATA);
-  console.log('assetTypeData', assetTypeData.DATA);
 
   const nodeTypes = {
     [NodeTypes.tankNodeTop]: (props) => (

@@ -28,7 +28,7 @@ export const AttributeValues = ({
     <>
       {attributeNames.map((attrName) => {
         const asset = assets[assetId];
-        const attribute = assetTypeDict?.[asset?.type].schema?.find(
+        const attribute = assetTypeDict?.[asset?.type]?.schema?.find(
           (s) => s.attribute_name === attrName
         );
         const attrLabel = attribute?.attribute_label;
@@ -41,7 +41,9 @@ export const AttributeValues = ({
               variant='body2'
               className={clsx(classes.text, {
                 [classes.redAlarm]:
-                  attrName === 'Alarm_Status' && attrVal !== 'No Alarm',
+                  attrName === 'Alarm_Status' &&
+                  attrVal &&
+                  attrVal !== 'No Alarm',
               })}
             >
               <b>{attrLabel}:</b> {attrVal} {attrUnits}

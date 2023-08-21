@@ -9,8 +9,8 @@ import { AssetLabel } from '../components/AssetLabel';
 
 const centerHo = 470;
 const levelGap = 200;
-const horizGap = 200;
-const miniGap = 130;
+const horizGap = 240;
+const miniGap = 210;
 
 const levelOneNodes = (
   assets: CbDictionary<string, Asset['frontend']>,
@@ -43,7 +43,19 @@ const levelOneNodes = (
   {
     id: '1-2',
     position: { x: centerHo, y: 0 },
-    data: { label: 'mylabel' },
+    data: {
+      label: (
+        <Grid container direction='column' justifyContent='center'>
+          <AssetLabel assets={assets} assetId='DiverDuckAST' />
+          <AttributeValues
+            assets={assets}
+            assetTypeDict={assetTypeDict}
+            assetId='DiverDuckAST'
+            attributeNames={['Tank_Level']}
+          />
+        </Grid>
+      ),
+    },
     type: NodeTypes.tankNodeLeftBottom,
   },
   {
@@ -72,13 +84,37 @@ const levelTwoNodes = (
   {
     id: '2-1',
     position: { x: (centerHo * 2) / 3, y: levelGap },
-    data: { label: 'mylabel' },
+    data: {
+      label: (
+        <Grid container direction='column'>
+          <AssetLabel assets={assets} assetId='DiverDuckAST_FIT500' />
+          <AttributeValues
+            assets={assets}
+            assetTypeDict={assetTypeDict}
+            assetId='DiverDuckAST_FIT500'
+            attributeNames={['Rate']}
+          />
+        </Grid>
+      ),
+    },
     type: NodeTypes.textNodeTopBottom,
   },
   {
     id: '2-2',
     position: { x: centerHo * 2 - (centerHo * 2) / 3, y: levelGap },
-    data: { label: 'mylabel' },
+    data: {
+      label: (
+        <Grid container direction='column'>
+          <AssetLabel assets={assets} assetId='DiverDuckAST_FIT600' />
+          <AttributeValues
+            assets={assets}
+            assetTypeDict={assetTypeDict}
+            assetId='DiverDuckAST_FIT600'
+            attributeNames={['Rate']}
+          />
+        </Grid>
+      ),
+    },
     type: NodeTypes.textNodeTopBottom,
   },
 ];
@@ -89,31 +125,123 @@ const levelThreeNodes = (
   {
     id: '3-1',
     position: { x: centerHo - horizGap * 2, y: levelGap * 2 },
-    data: { label: 'mylabel' },
+    data: {
+      label: (
+        <Grid container direction='column' spacing={1}>
+          <Grid container item direction='column'>
+            <AssetLabel assets={assets} assetId='DiverDuckAST_PIT100' />
+            <AttributeValues
+              assets={assets}
+              assetTypeDict={assetTypeDict}
+              assetId='DiverDuckAST_PIT100'
+              attributeNames={['Pressure']}
+            />
+          </Grid>
+          <Grid container item direction='column'>
+            <AssetLabel assets={assets} assetId='DiverDuckAST_FIT100' />
+            <AttributeValues
+              assets={assets}
+              assetTypeDict={assetTypeDict}
+              assetId='DiverDuckAST_FIT100'
+              attributeNames={['Rate']}
+            />
+          </Grid>
+        </Grid>
+      ),
+    },
     type: NodeTypes.textNodeTopBottom,
   },
   {
     id: '3-2',
     position: { x: centerHo - horizGap, y: levelGap * 2 },
-    data: { label: 'mylabel' },
+    data: {
+      label: (
+        <Grid container direction='column' spacing={1}>
+          <Grid container item direction='column'>
+            <AssetLabel assets={assets} assetId='DiverDuckAST_PIT200' />
+            <AttributeValues
+              assets={assets}
+              assetTypeDict={assetTypeDict}
+              assetId='DiverDuckAST_PIT200'
+              attributeNames={['Pressure']}
+            />
+          </Grid>
+          <Grid container item direction='column'>
+            <AssetLabel assets={assets} assetId='DiverDuckAST_FIT200' />
+            <AttributeValues
+              assets={assets}
+              assetTypeDict={assetTypeDict}
+              assetId='DiverDuckAST_FIT200'
+              attributeNames={['Rate']}
+            />
+          </Grid>
+        </Grid>
+      ),
+    },
     type: NodeTypes.textNodeTopBottom,
   },
   {
     id: '3-3',
     position: { x: centerHo, y: levelGap * 2 },
-    data: { label: 'mylabel' },
+    data: {
+      label: (
+        <Grid container direction='column' spacing={1}>
+          <Grid container item direction='column'>
+            <AssetLabel assets={assets} assetId='DiverDuckAST_PIT300' />
+            <AttributeValues
+              assets={assets}
+              assetTypeDict={assetTypeDict}
+              assetId='DiverDuckAST_PIT300'
+              attributeNames={['Pressure']}
+            />
+          </Grid>
+          <Grid container item direction='column'>
+            <AssetLabel assets={assets} assetId='DiverDuckAST_FIT300' />
+            <AttributeValues
+              assets={assets}
+              assetTypeDict={assetTypeDict}
+              assetId='DiverDuckAST_FIT300'
+              attributeNames={['Rate']}
+            />
+          </Grid>
+        </Grid>
+      ),
+    },
     type: NodeTypes.textNodeTopBottom,
   },
   {
     id: '3-4',
     position: { x: centerHo + horizGap, y: levelGap * 2 },
-    data: { label: 'mylabel' },
+    data: {
+      label: (
+        <Grid container direction='column' spacing={1}>
+          <Grid container item direction='column'>
+            <AssetLabel assets={assets} assetId='DiverDuckAST_PIT400' />
+            <AttributeValues
+              assets={assets}
+              assetTypeDict={assetTypeDict}
+              assetId='DiverDuckAST_PIT400'
+              attributeNames={['Pressure']}
+            />
+          </Grid>
+          <Grid container item direction='column'>
+            <AssetLabel assets={assets} assetId='DiverDuckAST_FIT400' />
+            <AttributeValues
+              assets={assets}
+              assetTypeDict={assetTypeDict}
+              assetId='DiverDuckAST_FIT400'
+              attributeNames={['Rate']}
+            />
+          </Grid>
+        </Grid>
+      ),
+    },
     type: NodeTypes.textNodeTopBottom,
   },
   {
     id: '3-5',
     position: { x: centerHo + horizGap * 2, y: levelGap * 2 },
-    data: { label: 'mylabel' },
+    data: { label: '' },
     type: NodeTypes.textNodeTopBottom,
   },
 ];
@@ -124,31 +252,66 @@ const levelFourNodes = (
   {
     id: '4-1',
     position: { x: centerHo - horizGap * 2, y: levelGap * 3 },
-    data: { label: 'mylabel' },
+    data: {
+      label: (
+        <Grid container direction='column'>
+          <AssetLabel assets={assets} assetId='RedHeadSWD_FIT100' />
+          <AttributeValues
+            assets={assets}
+            assetTypeDict={assetTypeDict}
+            assetId='RedHeadSWD_FIT100'
+            attributeNames={['Rate', 'Total']}
+          />
+        </Grid>
+      ),
+    },
     type: NodeTypes.textNodeTopBottom,
   },
   {
     id: '4-2',
     position: { x: centerHo - horizGap, y: levelGap * 3 },
-    data: { label: 'mylabel' },
+    data: {
+      label: (
+        <Grid container direction='column' spacing={1}>
+          <Grid container item direction='column'>
+            <AssetLabel assets={assets} assetId='BruinSWD_PIT100' />
+            <AttributeValues
+              assets={assets}
+              assetTypeDict={assetTypeDict}
+              assetId='BruinSWD_PIT100'
+              attributeNames={['Pressure']}
+            />
+          </Grid>
+          <Grid container item direction='column'>
+            <AssetLabel assets={assets} assetId='BruinSWD_FIT100' />
+            <AttributeValues
+              assets={assets}
+              assetTypeDict={assetTypeDict}
+              assetId='BruinSWD_FIT100'
+              attributeNames={['Rate', 'Total']}
+            />
+          </Grid>
+        </Grid>
+      ),
+    },
     type: NodeTypes.textNodeTopBottom,
   },
   {
     id: '4-3',
     position: { x: centerHo, y: levelGap * 3 },
-    data: { label: 'mylabel' },
+    data: { label: '' },
     type: NodeTypes.textNodeTopBottom,
   },
   {
     id: '4-4',
     position: { x: centerHo + horizGap, y: levelGap * 3 },
-    data: { label: 'mylabel' },
+    data: { label: '' },
     type: NodeTypes.textNodeTopBottom,
   },
   {
     id: '4-5',
     position: { x: centerHo + horizGap * 2, y: levelGap * 3 },
-    data: { label: 'mylabel' },
+    data: { label: '' },
     type: NodeTypes.textNodeTopBottom,
   },
 ];
@@ -159,31 +322,91 @@ const levelFiveNodes = (
   {
     id: '5-1',
     position: { x: centerHo - horizGap * 2, y: levelGap * 4 },
-    data: { label: 'mylabel' },
+    data: {
+      label: (
+        <Grid container direction='column' justifyContent='center'>
+          <AssetLabel assets={assets} assetId='RedHeadSWD_LIT100' />
+          <AttributeValues
+            assets={assets}
+            assetTypeDict={assetTypeDict}
+            assetId='RedHeadSWD_LIT100'
+            attributeNames={['Tank_Level']}
+          />
+        </Grid>
+      ),
+      textBox: (
+        <Grid container direction='column' justifyContent='center'>
+          <AssetLabel assets={assets} assetId='RedheadSWD_PIT200' />
+          <AttributeValues
+            assets={assets}
+            assetTypeDict={assetTypeDict}
+            assetId='RedheadSWD_PIT200'
+            attributeNames={['Pressure']}
+          />
+          <AssetLabel assets={assets} assetId='RedheadSWD_CV200' />
+          <AttributeValues
+            assets={assets}
+            assetTypeDict={assetTypeDict}
+            assetId='RedheadSWD_CV200'
+            attributeNames={['Valve_Position']}
+          />
+        </Grid>
+      ),
+    },
     type: NodeTypes.tankNodeTop,
   },
   {
     id: '5-2',
     position: { x: centerHo - horizGap, y: levelGap * 4 },
-    data: { label: 'mylabel' },
+    data: {
+      label: (
+        <Grid container direction='column' justifyContent='center'>
+          <AssetLabel assets={assets} assetId='BruinSWD_LIT100' />
+          <AttributeValues
+            assets={assets}
+            assetTypeDict={assetTypeDict}
+            assetId='BruinSWD_LIT100'
+            attributeNames={['Tank_Level']}
+          />
+        </Grid>
+      ),
+      textBox: (
+        <Grid container direction='column' justifyContent='center'>
+          <AssetLabel assets={assets} assetId='BruinSWD_PIT200' />
+          <AttributeValues
+            assets={assets}
+            assetTypeDict={assetTypeDict}
+            assetId='BruinSWD_PIT200'
+            attributeNames={['Pressure']}
+          />
+          <AssetLabel assets={assets} assetId='BruinSWD_CV200' />
+          <AttributeValues
+            assets={assets}
+            assetTypeDict={assetTypeDict}
+            assetId='BruinSWD_CV200'
+            attributeNames={['Valve_Position']}
+          />
+        </Grid>
+      ),
+    },
     type: NodeTypes.tankNodeTop,
   },
   {
     id: '5-3',
     position: { x: centerHo, y: levelGap * 4 },
-    data: { label: 'mylabel' },
+    data: { label: '' },
     type: NodeTypes.tankNodeTop,
   },
   {
     id: '5-4',
     position: { x: centerHo + horizGap, y: levelGap * 4 },
-    data: { label: 'mylabel' },
+    data: { label: '' },
     type: NodeTypes.tankNodeTop,
   },
   {
     id: '5-5',
     position: { x: centerHo + horizGap * 2, y: levelGap * 4 },
-    data: { label: 'mylabel' },
+    data: { label: '' },
     type: NodeTypes.tankNodeTop,
   },
 ];

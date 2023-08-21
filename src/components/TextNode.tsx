@@ -4,8 +4,8 @@ import { memo } from 'react';
 const useTextNodeStyles = makeStyles((theme) => ({
   textCard: {
     padding: theme.spacing(2),
-    width: '170px',
-    height: '130px',
+    width: '220px',
+    height: '150px',
     display: 'flex',
     border: `1px solid ${theme.palette.text.secondary}`,
     backgroundColor: theme.palette.background.paper,
@@ -18,7 +18,7 @@ const TextNode = ({
   data,
   handles,
 }: {
-  data: { label: string };
+  data: { label: string | JSX.Element };
   handles?: React.ReactNode;
 }) => {
   const classes = useTextNodeStyles();
