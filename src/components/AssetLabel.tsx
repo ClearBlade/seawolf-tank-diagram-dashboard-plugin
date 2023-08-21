@@ -3,6 +3,7 @@ import { CbDictionary } from '../types';
 import { Grid, Tooltip, Typography, makeStyles } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import ErrorIcon from '@material-ui/icons/Error';
+import { AttributeNames, NoAlarmValue } from '../utils';
 
 const useAssetLabelStyles = makeStyles((theme) => ({
   text: {
@@ -28,8 +29,8 @@ export const AssetLabel = ({
 }) => {
   const classes = useAssetLabelStyles();
   const asset = assets[assetId];
-  const alarmStatus = asset?.custom_data?.['Alarm_Status'];
-  const hasAlarm = alarmStatus && alarmStatus !== 'No Alarm';
+  const alarmStatus = asset?.custom_data?.[AttributeNames.Alarm_Status];
+  const hasAlarm = alarmStatus && alarmStatus !== NoAlarmValue;
 
   return (
     <Grid item>

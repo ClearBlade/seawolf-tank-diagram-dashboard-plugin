@@ -2,6 +2,7 @@ import { Asset, AssetType } from '@clearblade/ia-mfe-core';
 import { CbDictionary } from '../types';
 import { Grid, Typography, makeStyles } from '@material-ui/core';
 import clsx from 'clsx';
+import { AttributeNames, NoAlarmValue } from '../utils';
 
 const useAttributeValuesStyles = makeStyles((theme) => ({
   text: {
@@ -41,9 +42,9 @@ export const AttributeValues = ({
               variant='body2'
               className={clsx(classes.text, {
                 [classes.redAlarm]:
-                  attrName === 'Alarm_Status' &&
+                  attrName === AttributeNames.Alarm_Status &&
                   attrVal &&
-                  attrVal !== 'No Alarm',
+                  attrVal !== NoAlarmValue,
               })}
             >
               <b>{attrLabel}:</b> {attrVal} {attrUnits}

@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import ReactFlow, { Handle, Position } from 'reactflow';
 import { useFetchAssetsByIds } from '../api';
-import { NodeTypes, allNodes, assetIds, edges } from '../utils';
+import { NodeTypes, allNodes, selectedAssetIds, edges } from '../utils';
 import TankNode from './TankNode';
 import TextNode from './TextNode';
 import 'reactflow/dist/style.css';
@@ -22,7 +22,7 @@ export default function DashboardPlugin() {
     data: assetsData,
     isLoading: loadingAssets,
     error: errorAssets,
-  } = useFetchAssetsByIds(assetIds);
+  } = useFetchAssetsByIds(selectedAssetIds);
   const {
     data: assetTypeData,
     isLoading: loadingAssetTypes,

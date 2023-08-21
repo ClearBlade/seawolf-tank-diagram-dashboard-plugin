@@ -6,6 +6,8 @@ import { CbDictionary } from '../types';
 import { Grid, Typography } from '@material-ui/core';
 import { AttributeValues } from '../components/AttributeValues';
 import { AssetLabel } from '../components/AssetLabel';
+import { AssetIds } from './assetIds';
+import { AttributeNames } from './attributeIds';
 
 const centerHo = 470;
 const levelGap = 200;
@@ -28,12 +30,12 @@ const levelOneNodes = (
     data: {
       label: (
         <Grid container direction='column'>
-          <AssetLabel assets={assets} assetId='DiverDuckAST_FIT700' />
+          <AssetLabel assets={assets} assetId={AssetIds.DiverDuckAST_FIT700} />
           <AttributeValues
             assets={assets}
             assetTypeDict={assetTypeDict}
-            assetId='DiverDuckAST_FIT700'
-            attributeNames={['Rate', 'Total']}
+            assetId={AssetIds.DiverDuckAST_FIT700}
+            attributeNames={[AttributeNames.Rate, AttributeNames.Total]}
           />
         </Grid>
       ),
@@ -46,12 +48,12 @@ const levelOneNodes = (
     data: {
       label: (
         <Grid container direction='column' justifyContent='center'>
-          <AssetLabel assets={assets} assetId='DiverDuckAST' />
+          <AssetLabel assets={assets} assetId={AssetIds.DiverDuckAST} />
           <AttributeValues
             assets={assets}
             assetTypeDict={assetTypeDict}
-            assetId='DiverDuckAST'
-            attributeNames={['Tank_Level']}
+            assetId={AssetIds.DiverDuckAST}
+            attributeNames={[AttributeNames.Tank_Level]}
           />
         </Grid>
       ),
@@ -64,12 +66,12 @@ const levelOneNodes = (
     data: {
       label: (
         <Grid container direction='column'>
-          <AssetLabel assets={assets} assetId='DiverDuckAST_H2S' />
+          <AssetLabel assets={assets} assetId={AssetIds.DiverDuckAST_H2S} />
           <AttributeValues
             assets={assets}
             assetTypeDict={assetTypeDict}
-            assetId='DiverDuckAST_H2S'
-            attributeNames={['Alarm_Status']}
+            assetId={AssetIds.DiverDuckAST_H2S}
+            attributeNames={[AttributeNames.Alarm_Status]}
           />
         </Grid>
       ),
@@ -87,12 +89,12 @@ const levelTwoNodes = (
     data: {
       label: (
         <Grid container direction='column'>
-          <AssetLabel assets={assets} assetId='DiverDuckAST_FIT500' />
+          <AssetLabel assets={assets} assetId={AssetIds.DiverDuckAST_FIT500} />
           <AttributeValues
             assets={assets}
             assetTypeDict={assetTypeDict}
-            assetId='DiverDuckAST_FIT500'
-            attributeNames={['Rate']}
+            assetId={AssetIds.DiverDuckAST_FIT500}
+            attributeNames={[AttributeNames.Rate]}
           />
         </Grid>
       ),
@@ -105,12 +107,12 @@ const levelTwoNodes = (
     data: {
       label: (
         <Grid container direction='column'>
-          <AssetLabel assets={assets} assetId='DiverDuckAST_FIT600' />
+          <AssetLabel assets={assets} assetId={AssetIds.DiverDuckAST_FIT600} />
           <AttributeValues
             assets={assets}
             assetTypeDict={assetTypeDict}
-            assetId='DiverDuckAST_FIT600'
-            attributeNames={['Rate']}
+            assetId={AssetIds.DiverDuckAST_FIT600}
+            attributeNames={[AttributeNames.Rate]}
           />
         </Grid>
       ),
@@ -129,21 +131,27 @@ const levelThreeNodes = (
       label: (
         <Grid container direction='column' spacing={1}>
           <Grid container item direction='column'>
-            <AssetLabel assets={assets} assetId='DiverDuckAST_PIT100' />
+            <AssetLabel
+              assets={assets}
+              assetId={AssetIds.DiverDuckAST_PIT100}
+            />
             <AttributeValues
               assets={assets}
               assetTypeDict={assetTypeDict}
-              assetId='DiverDuckAST_PIT100'
-              attributeNames={['Pressure']}
+              assetId={AssetIds.DiverDuckAST_PIT100}
+              attributeNames={[AttributeNames.Pressure]}
             />
           </Grid>
           <Grid container item direction='column'>
-            <AssetLabel assets={assets} assetId='DiverDuckAST_FIT100' />
+            <AssetLabel
+              assets={assets}
+              assetId={AssetIds.DiverDuckAST_FIT100}
+            />
             <AttributeValues
               assets={assets}
               assetTypeDict={assetTypeDict}
-              assetId='DiverDuckAST_FIT100'
-              attributeNames={['Rate']}
+              assetId={AssetIds.DiverDuckAST_FIT100}
+              attributeNames={[AttributeNames.Rate]}
             />
           </Grid>
         </Grid>
@@ -158,21 +166,27 @@ const levelThreeNodes = (
       label: (
         <Grid container direction='column' spacing={1}>
           <Grid container item direction='column'>
-            <AssetLabel assets={assets} assetId='DiverDuckAST_PIT200' />
+            <AssetLabel
+              assets={assets}
+              assetId={AssetIds.DiverDuckAST_PIT200}
+            />
             <AttributeValues
               assets={assets}
               assetTypeDict={assetTypeDict}
-              assetId='DiverDuckAST_PIT200'
-              attributeNames={['Pressure']}
+              assetId={AssetIds.DiverDuckAST_PIT200}
+              attributeNames={[AttributeNames.Pressure]}
             />
           </Grid>
           <Grid container item direction='column'>
-            <AssetLabel assets={assets} assetId='DiverDuckAST_FIT200' />
+            <AssetLabel
+              assets={assets}
+              assetId={AssetIds.DiverDuckAST_FIT200}
+            />
             <AttributeValues
               assets={assets}
               assetTypeDict={assetTypeDict}
-              assetId='DiverDuckAST_FIT200'
-              attributeNames={['Rate']}
+              assetId={AssetIds.DiverDuckAST_FIT200}
+              attributeNames={[AttributeNames.Rate]}
             />
           </Grid>
         </Grid>
@@ -187,21 +201,27 @@ const levelThreeNodes = (
       label: (
         <Grid container direction='column' spacing={1}>
           <Grid container item direction='column'>
-            <AssetLabel assets={assets} assetId='DiverDuckAST_PIT300' />
+            <AssetLabel
+              assets={assets}
+              assetId={AssetIds.DiverDuckAST_PIT300}
+            />
             <AttributeValues
               assets={assets}
               assetTypeDict={assetTypeDict}
-              assetId='DiverDuckAST_PIT300'
-              attributeNames={['Pressure']}
+              assetId={AssetIds.DiverDuckAST_PIT300}
+              attributeNames={[AttributeNames.Pressure]}
             />
           </Grid>
           <Grid container item direction='column'>
-            <AssetLabel assets={assets} assetId='DiverDuckAST_FIT300' />
+            <AssetLabel
+              assets={assets}
+              assetId={AssetIds.DiverDuckAST_FIT300}
+            />
             <AttributeValues
               assets={assets}
               assetTypeDict={assetTypeDict}
-              assetId='DiverDuckAST_FIT300'
-              attributeNames={['Rate']}
+              assetId={AssetIds.DiverDuckAST_FIT300}
+              attributeNames={[AttributeNames.Rate]}
             />
           </Grid>
         </Grid>
@@ -216,21 +236,27 @@ const levelThreeNodes = (
       label: (
         <Grid container direction='column' spacing={1}>
           <Grid container item direction='column'>
-            <AssetLabel assets={assets} assetId='DiverDuckAST_PIT400' />
+            <AssetLabel
+              assets={assets}
+              assetId={AssetIds.DiverDuckAST_PIT400}
+            />
             <AttributeValues
               assets={assets}
               assetTypeDict={assetTypeDict}
-              assetId='DiverDuckAST_PIT400'
-              attributeNames={['Pressure']}
+              assetId={AssetIds.DiverDuckAST_PIT400}
+              attributeNames={[AttributeNames.Pressure]}
             />
           </Grid>
           <Grid container item direction='column'>
-            <AssetLabel assets={assets} assetId='DiverDuckAST_FIT400' />
+            <AssetLabel
+              assets={assets}
+              assetId={AssetIds.DiverDuckAST_FIT400}
+            />
             <AttributeValues
               assets={assets}
               assetTypeDict={assetTypeDict}
-              assetId='DiverDuckAST_FIT400'
-              attributeNames={['Rate']}
+              assetId={AssetIds.DiverDuckAST_FIT400}
+              attributeNames={[AttributeNames.Rate]}
             />
           </Grid>
         </Grid>
@@ -255,12 +281,12 @@ const levelFourNodes = (
     data: {
       label: (
         <Grid container direction='column'>
-          <AssetLabel assets={assets} assetId='RedHeadSWD_FIT100' />
+          <AssetLabel assets={assets} assetId={AssetIds.RedHeadSWD_FIT100} />
           <AttributeValues
             assets={assets}
             assetTypeDict={assetTypeDict}
-            assetId='RedHeadSWD_FIT100'
-            attributeNames={['Rate', 'Total']}
+            assetId={AssetIds.RedHeadSWD_FIT100}
+            attributeNames={[AttributeNames.Rate, AttributeNames.Total]}
           />
         </Grid>
       ),
@@ -274,21 +300,21 @@ const levelFourNodes = (
       label: (
         <Grid container direction='column' spacing={1}>
           <Grid container item direction='column'>
-            <AssetLabel assets={assets} assetId='BruinSWD_PIT100' />
+            <AssetLabel assets={assets} assetId={AssetIds.BruinSWD_PIT100} />
             <AttributeValues
               assets={assets}
               assetTypeDict={assetTypeDict}
-              assetId='BruinSWD_PIT100'
-              attributeNames={['Pressure']}
+              assetId={AssetIds.BruinSWD_PIT100}
+              attributeNames={[AttributeNames.Pressure]}
             />
           </Grid>
           <Grid container item direction='column'>
-            <AssetLabel assets={assets} assetId='BruinSWD_FIT100' />
+            <AssetLabel assets={assets} assetId={AssetIds.BruinSWD_FIT100} />
             <AttributeValues
               assets={assets}
               assetTypeDict={assetTypeDict}
-              assetId='BruinSWD_FIT100'
-              attributeNames={['Rate', 'Total']}
+              assetId={AssetIds.BruinSWD_FIT100}
+              attributeNames={[AttributeNames.Rate, AttributeNames.Total]}
             />
           </Grid>
         </Grid>
@@ -325,30 +351,30 @@ const levelFiveNodes = (
     data: {
       label: (
         <Grid container direction='column' justifyContent='center'>
-          <AssetLabel assets={assets} assetId='RedHeadSWD_LIT100' />
+          <AssetLabel assets={assets} assetId={AssetIds.RedHeadSWD_LIT100} />
           <AttributeValues
             assets={assets}
             assetTypeDict={assetTypeDict}
-            assetId='RedHeadSWD_LIT100'
-            attributeNames={['Tank_Level']}
+            assetId={AssetIds.RedHeadSWD_LIT100}
+            attributeNames={[AttributeNames.Tank_Level]}
           />
         </Grid>
       ),
       textBox: (
         <Grid container direction='column' justifyContent='center'>
-          <AssetLabel assets={assets} assetId='RedheadSWD_PIT200' />
+          <AssetLabel assets={assets} assetId={AssetIds.RedheadSWD_PIT200} />
           <AttributeValues
             assets={assets}
             assetTypeDict={assetTypeDict}
-            assetId='RedheadSWD_PIT200'
-            attributeNames={['Pressure']}
+            assetId={AssetIds.RedheadSWD_PIT200}
+            attributeNames={[AttributeNames.Pressure]}
           />
-          <AssetLabel assets={assets} assetId='RedheadSWD_CV200' />
+          <AssetLabel assets={assets} assetId={AssetIds.RedheadSWD_CV200} />
           <AttributeValues
             assets={assets}
             assetTypeDict={assetTypeDict}
-            assetId='RedheadSWD_CV200'
-            attributeNames={['Valve_Position']}
+            assetId={AssetIds.RedheadSWD_CV200}
+            attributeNames={[AttributeNames.Valve_Position]}
           />
         </Grid>
       ),
@@ -361,30 +387,30 @@ const levelFiveNodes = (
     data: {
       label: (
         <Grid container direction='column' justifyContent='center'>
-          <AssetLabel assets={assets} assetId='BruinSWD_LIT100' />
+          <AssetLabel assets={assets} assetId={AssetIds.BruinSWD_LIT100} />
           <AttributeValues
             assets={assets}
             assetTypeDict={assetTypeDict}
-            assetId='BruinSWD_LIT100'
-            attributeNames={['Tank_Level']}
+            assetId={AssetIds.BruinSWD_LIT100}
+            attributeNames={[AttributeNames.Tank_Level]}
           />
         </Grid>
       ),
       textBox: (
         <Grid container direction='column' justifyContent='center'>
-          <AssetLabel assets={assets} assetId='BruinSWD_PIT200' />
+          <AssetLabel assets={assets} assetId={AssetIds.BruinSWD_PIT200} />
           <AttributeValues
             assets={assets}
             assetTypeDict={assetTypeDict}
-            assetId='BruinSWD_PIT200'
-            attributeNames={['Pressure']}
+            assetId={AssetIds.BruinSWD_PIT200}
+            attributeNames={[AttributeNames.Pressure]}
           />
-          <AssetLabel assets={assets} assetId='BruinSWD_CV200' />
+          <AssetLabel assets={assets} assetId={AssetIds.BruinSWD_CV200} />
           <AttributeValues
             assets={assets}
             assetTypeDict={assetTypeDict}
-            assetId='BruinSWD_CV200'
-            attributeNames={['Valve_Position']}
+            assetId={AssetIds.BruinSWD_CV200}
+            attributeNames={[AttributeNames.Valve_Position]}
           />
         </Grid>
       ),
@@ -603,30 +629,4 @@ export const allNodes = (
   ...levelThreeNodes(assets, assetTypeDict),
   ...levelFourNodes(assets, assetTypeDict),
   ...levelFiveNodes(assets, assetTypeDict),
-];
-
-export const assetIds = [
-  'DiverDuckAST_FIT700',
-  'DiverDuckAST',
-  'DiverDuckAST_H2S',
-  'DiverDuckAST_FIT500',
-  'DiverDuckAST_FIT600',
-  'DiverDuckAST_PIT100',
-  'DiverDuckAST_FIT100',
-  'DiverDuckAST_PIT200',
-  'DiverDuckAST_FIT200',
-  'DiverDuckAST_PIT300',
-  'DiverDuckAST_FIT300',
-  'DiverDuckAST_PIT400',
-  'DiverDuckAST_FIT400',
-  'RedHeadSWD_FIT100',
-  'RedHeadSWD_FIT100',
-  'BruinSWD_PIT100',
-  'BruinSWD_FIT100',
-  'RedHeadSWD_LIT100',
-  'BruinSWD_LIT100',
-  'RedheadSWD_PIT200',
-  'RedheadSWD_CV200',
-  'BruinSWD_PIT200',
-  'BruinSWD_CV200',
 ];
