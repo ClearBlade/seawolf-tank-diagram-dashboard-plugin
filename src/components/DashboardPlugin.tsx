@@ -7,6 +7,7 @@ import { NodeTypes, allNodes, selectedAssetIds, edges } from '../utils';
 import TankNode from './TankNode';
 import TextNode from './TextNode';
 import 'reactflow/dist/style.css';
+import FloatingTextNode from './FloatingTextNode';
 
 const usePluginStyles = makeStyles((theme) => ({
   plugin: {
@@ -56,6 +57,7 @@ export default function DashboardPlugin() {
       />
     ),
     [NodeTypes.textNode]: TextNode,
+    [NodeTypes.floatingTextNode]: FloatingTextNode,
     [NodeTypes.blankNode]: (props) => (
       <div {...props} style={{ height: '10px', width: '10px' }}>
         <Handle type='source' position={Position.Right} />

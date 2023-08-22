@@ -4,5 +4,6 @@ export enum NodeTypes {
   textNodeTopBottom = 'textNodeTopBottom',
   textNodeLeftRight = 'textNodeLeftRight',
   textNode = 'textNode',
+  floatingTextNode = 'floatingTextNode',
   blankNode = 'blankNode',
 }

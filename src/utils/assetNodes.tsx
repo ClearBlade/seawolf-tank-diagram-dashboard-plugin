@@ -12,6 +12,17 @@ const levelGap = 200;
 const horizGap = 240;
 const miniGap = 210;
 
+const getTankFill = (schema?: AssetType['frontend']['schema']) => {
+  const tankLevel = schema.find(
+    (attr) => attr.attribute_name === AttributeNames.Tank_Level
+  );
+  const maxFill = schema.find(
+    (attr) => attr.attribute_name === AttributeNames.Max_Fill
+  );
+  if (typeof tankLevel !== 'number' || typeof maxFill !== 'number') return 0;
+  return tankLevel / maxFill;
+};
+
 const levelOneNodes = (
   assets: CbDictionary<string, Asset['frontend']>,
   assetTypeDict: CbDictionary<string, AssetType['frontend']>
@@ -51,11 +62,17 @@ const levelOneNodes = (
             assets={assets}
             assetTypeDict={assetTypeDict}
             assetId={AssetIds.DiverDuckAST_T100}
-            attributeNames={[AttributeNames.Tank_Level]}
+            attributeNames={[
+              AttributeNames.Tank_Level,
+              AttributeNames.Max_Fill,
+            ]}
           />
         </Grid>
       ),
     },
+    percentFilled: getTankFill(
+      assetTypeDict[assets[AssetIds.DiverDuckAST_T100]?.type]?.schema
+    ),
     type: NodeTypes.tankNodeLeftBottom,
   },
   {
@@ -74,7 +91,7 @@ const levelOneNodes = (
         </Grid>
       ),
     },
-    type: NodeTypes.textNode,
+    type: NodeTypes.floatingTextNode,
   },
 ];
 const levelTwoNodes = (
@@ -354,7 +371,10 @@ const levelFiveNodes = (
             assets={assets}
             assetTypeDict={assetTypeDict}
             assetId={AssetIds.RedHeadSWD_LIT100}
-            attributeNames={[AttributeNames.Tank_Level]}
+            attributeNames={[
+              AttributeNames.Tank_Level,
+              AttributeNames.Max_Fill,
+            ]}
           />
         </Grid>
       ),
@@ -381,6 +401,9 @@ const levelFiveNodes = (
         </Grid>
       ),
     },
+    percentFilled: getTankFill(
+      assetTypeDict[assets[AssetIds.RedHeadSWD_LIT100]?.type]?.schema
+    ),
     type: NodeTypes.tankNodeTop,
   },
   {
@@ -394,7 +417,10 @@ const levelFiveNodes = (
             assets={assets}
             assetTypeDict={assetTypeDict}
             assetId={AssetIds.BruinSWD_LIT100}
-            attributeNames={[AttributeNames.Tank_Level]}
+            attributeNames={[
+              AttributeNames.Tank_Level,
+              AttributeNames.Max_Fill,
+            ]}
           />
         </Grid>
       ),
@@ -421,24 +447,33 @@ const levelFiveNodes = (
         </Grid>
       ),
     },
+    percentFilled: getTankFill(
+      assetTypeDict[assets[AssetIds.BruinSWD_LIT100]?.type]?.schema
+    ),
     type: NodeTypes.tankNodeTop,
   },
   {
     id: '5-3',
     position: { x: centerHo, y: levelGap * 4 },
-    data: { label: '' },
+    data: {
+      label: '',
+    },
     type: NodeTypes.tankNodeTop,
   },
   {
     id: '5-4',
     position: { x: centerHo + horizGap, y: levelGap * 4 },
-    data: { label: '' },
+    data: {
+      label: '',
+    },
     type: NodeTypes.tankNodeTop,
   },
   {
     id: '5-5',
     position: { x: centerHo + horizGap * 2, y: levelGap * 4 },
-    data: { label: '' },
+    data: {
+      label: '',
+    },
     type: NodeTypes.tankNodeTop,
   },
 ];
