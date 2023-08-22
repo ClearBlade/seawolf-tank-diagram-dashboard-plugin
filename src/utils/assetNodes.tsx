@@ -1,13 +1,11 @@
-import { MarkerType } from 'reactflow';
-import { v4 as uuid } from 'uuid';
-import { NodeTypes } from './nodeTypes';
 import { Asset, AssetType } from '@clearblade/ia-mfe-core';
-import { CbDictionary } from '../types';
-import { Grid, Typography } from '@material-ui/core';
-import { AttributeValues } from '../components/AttributeValues';
+import { Grid } from '@material-ui/core';
 import { AssetLabel } from '../components/AssetLabel';
+import { AttributeValues } from '../components/AttributeValues';
+import { CbDictionary } from '../types';
 import { AssetIds } from './assetIds';
 import { AttributeNames } from './attributeIds';
+import { NodeTypes } from './nodeTypes';
 
 const centerHo = 470;
 const levelGap = 200;
@@ -48,11 +46,11 @@ const levelOneNodes = (
     data: {
       label: (
         <Grid container direction='column' justifyContent='center'>
-          <AssetLabel assets={assets} assetId={AssetIds.DiverDuckAST} />
+          <AssetLabel assets={assets} assetId={AssetIds.DiverDuckAST_T100} />
           <AttributeValues
             assets={assets}
             assetTypeDict={assetTypeDict}
-            assetId={AssetIds.DiverDuckAST}
+            assetId={AssetIds.DiverDuckAST_T100}
             attributeNames={[AttributeNames.Tank_Level]}
           />
         </Grid>
@@ -361,21 +359,25 @@ const levelFiveNodes = (
         </Grid>
       ),
       textBox: (
-        <Grid container direction='column' justifyContent='center'>
-          <AssetLabel assets={assets} assetId={AssetIds.RedheadSWD_PIT200} />
-          <AttributeValues
-            assets={assets}
-            assetTypeDict={assetTypeDict}
-            assetId={AssetIds.RedheadSWD_PIT200}
-            attributeNames={[AttributeNames.Pressure]}
-          />
-          <AssetLabel assets={assets} assetId={AssetIds.RedheadSWD_CV200} />
-          <AttributeValues
-            assets={assets}
-            assetTypeDict={assetTypeDict}
-            assetId={AssetIds.RedheadSWD_CV200}
-            attributeNames={[AttributeNames.Valve_Position]}
-          />
+        <Grid container direction='column' justifyContent='center' spacing={1}>
+          <Grid item>
+            <AssetLabel assets={assets} assetId={AssetIds.RedHead_SWD_PIT200} />
+            <AttributeValues
+              assets={assets}
+              assetTypeDict={assetTypeDict}
+              assetId={AssetIds.RedHead_SWD_PIT200}
+              attributeNames={[AttributeNames.Pressure]}
+            />
+          </Grid>
+          <Grid item>
+            <AssetLabel assets={assets} assetId={AssetIds.RedHeadSWD_CV200} />
+            <AttributeValues
+              assets={assets}
+              assetTypeDict={assetTypeDict}
+              assetId={AssetIds.RedHeadSWD_CV200}
+              attributeNames={[AttributeNames.Valve_Position]}
+            />
+          </Grid>
         </Grid>
       ),
     },
@@ -397,21 +399,25 @@ const levelFiveNodes = (
         </Grid>
       ),
       textBox: (
-        <Grid container direction='column' justifyContent='center'>
-          <AssetLabel assets={assets} assetId={AssetIds.BruinSWD_PIT200} />
-          <AttributeValues
-            assets={assets}
-            assetTypeDict={assetTypeDict}
-            assetId={AssetIds.BruinSWD_PIT200}
-            attributeNames={[AttributeNames.Pressure]}
-          />
-          <AssetLabel assets={assets} assetId={AssetIds.BruinSWD_CV200} />
-          <AttributeValues
-            assets={assets}
-            assetTypeDict={assetTypeDict}
-            assetId={AssetIds.BruinSWD_CV200}
-            attributeNames={[AttributeNames.Valve_Position]}
-          />
+        <Grid container direction='column' justifyContent='center' spacing={1}>
+          <Grid item>
+            <AssetLabel assets={assets} assetId={AssetIds.BruinSWD_PIT200} />
+            <AttributeValues
+              assets={assets}
+              assetTypeDict={assetTypeDict}
+              assetId={AssetIds.BruinSWD_PIT200}
+              attributeNames={[AttributeNames.Pressure]}
+            />
+          </Grid>
+          <Grid item>
+            <AssetLabel assets={assets} assetId={AssetIds.BruinSWD_CV200} />
+            <AttributeValues
+              assets={assets}
+              assetTypeDict={assetTypeDict}
+              assetId={AssetIds.BruinSWD_CV200}
+              attributeNames={[AttributeNames.Valve_Position]}
+            />
+          </Grid>
         </Grid>
       ),
     },
@@ -434,189 +440,6 @@ const levelFiveNodes = (
     position: { x: centerHo + horizGap * 2, y: levelGap * 4 },
     data: { label: '' },
     type: NodeTypes.tankNodeTop,
-  },
-];
-
-export const edges = [
-  {
-    id: uuid(),
-    source: '1-0',
-    target: '1-1',
-    type: 'straight',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
-  },
-  {
-    id: uuid(),
-    source: '1-1',
-    target: '1-2',
-    type: 'straight',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
-  },
-  {
-    id: uuid(),
-    source: '1-2',
-    target: '2-1',
-    type: 'step',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
-  },
-  {
-    id: uuid(),
-    source: '1-2',
-    target: '2-2',
-    type: 'step',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
-  },
-  {
-    id: uuid(),
-    source: '2-1',
-    target: '3-1',
-    type: 'step',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
-  },
-  {
-    id: uuid(),
-    source: '2-1',
-    target: '3-2',
-    type: 'step',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
-  },
-  {
-    id: uuid(),
-    source: '2-1',
-    target: '3-3',
-    type: 'straight',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
-  },
-  {
-    id: uuid(),
-    source: '2-2',
-    target: '3-3',
-    type: 'straight',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
-  },
-  {
-    id: uuid(),
-    source: '2-2',
-    target: '3-4',
-    type: 'step',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
-  },
-  {
-    id: uuid(),
-    source: '2-2',
-    target: '3-5',
-    type: 'step',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
-  },
-  {
-    id: uuid(),
-    source: '3-1',
-    target: '4-1',
-    type: 'straight',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
-  },
-  {
-    id: uuid(),
-    source: '4-1',
-    target: '5-1',
-    type: 'straight',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
-  },
-  {
-    id: uuid(),
-    source: '3-2',
-    target: '4-2',
-    type: 'straight',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
-  },
-  {
-    id: uuid(),
-    source: '4-2',
-    target: '5-2',
-    type: 'straight',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
-  },
-  {
-    id: uuid(),
-    source: '3-3',
-    target: '4-3',
-    type: 'straight',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
-  },
-  {
-    id: uuid(),
-    source: '4-3',
-    target: '5-3',
-    type: 'straight',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
-  },
-  {
-    id: uuid(),
-    source: '3-4',
-    target: '4-4',
-    type: 'straight',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
-  },
-  {
-    id: uuid(),
-    source: '4-4',
-    target: '5-4',
-    type: 'straight',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
-  },
-  {
-    id: uuid(),
-    source: '3-5',
-    target: '4-5',
-    type: 'straight',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
-  },
-  {
-    id: uuid(),
-    source: '4-5',
-    target: '5-5',
-    type: 'straight',
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-    },
   },
 ];
 
