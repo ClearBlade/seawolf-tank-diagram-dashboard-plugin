@@ -1,5 +1,5 @@
 import { useAssetTypesCache } from '@clearblade/ia-mfe-react';
-import { makeStyles } from '@material-ui/core';
+import { Grid, makeStyles } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import ReactFlow, { Handle, Position } from 'reactflow';
 import { useFetchAssetsByIds } from '../api';
@@ -8,6 +8,7 @@ import TankNode from './TankNode';
 import TextNode from './TextNode';
 import 'reactflow/dist/style.css';
 import FloatingTextNode from './FloatingTextNode';
+import RefreshRateSetting from './RefreshRateSetting';
 
 const usePluginStyles = makeStyles((theme) => ({
   plugin: {
@@ -97,6 +98,12 @@ export default function DashboardPlugin() {
           height: 'inherit',
         }}
       >
+        <Grid container justifyContent='flex-end'>
+          <Grid item>
+            <RefreshRateSetting assetIds={selectedAssetIds} />
+          </Grid>
+        </Grid>
+
         <ReactFlow
           nodesDraggable={false}
           nodesConnectable={false}

@@ -13,7 +13,8 @@
     "watch-tests": "cross-env BABEL_ENV=test jest --watch",
     "prepare": "husky install",
     "coverage": "cross-env BABEL_ENV=test jest --coverage",
-    "build:types": "tsc"
+    "build:types": "tsc",
+    "typecheck": "tsc -b"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
@@ -67,7 +68,8 @@
     "reactflow": "^11.7.4",
     "single-spa": "^5.9.4",
     "single-spa-react": "^4.3.1",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "zustand": "^4.4.1"
   },
   "types": "dist/seawolf-tank-diagram-dashboard-plugin.d.ts"
 }

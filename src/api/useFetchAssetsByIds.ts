@@ -3,8 +3,11 @@ import {
   createFrontendAssetsQuery,
   fetchAssets,
 } from '@clearblade/ia-mfe-core';
-import { QueryFunctionContext, useQuery } from 'react-query';
+import { QueryFunctionContext, useQuery, useQueryClient } from 'react-query';
 import { CbDictionary } from '../types';
+import { assetQueryKeys } from './queryKeys';
+import { useEffect } from 'react';
+import useRefreshRateStore from '../stores/useRefreshRateStore';
 
 export const assetsByIdsFetcherFn = ({
   queryKey: [
@@ -12,9 +15,7 @@ export const assetsByIdsFetcherFn = ({
       params: { ids },
     },
   ],
-}: QueryFunctionContext<
-  ReturnType<typeof assetsByIdsQueryKeys.detail>
->): Promise<{
+}: QueryFunctionContext<ReturnType<typeof assetQueryKeys.byIds>>): Promise<{
   DATA: undefined | CbDictionary<string, Asset['frontend']>;
   COUNT: number;
 }> => {
@@ -44,14 +45,25 @@ export const assetsByIdsFetcherFn = ({
   );
 };
 
-export const assetsByIdsQueryKeys = {
-  detail: (params: { ids: string[] }) =>
-    [{ scope: 'assetsByIds', params }] as const,
-};
+export function useFetchAssetsByIds(ids?: string[]) {
+  const queryclient = useQueryClient();
+  const refreshRate = useRefreshRateStore((state) => state.refreshRate);
 
-export function useFetchAssetsByIds(ids: string[]) {
-  return useQuery(assetsByIdsQueryKeys.detail({ ids }), assetsByIdsFetcherFn, {
+  useEffect(() => {
+    if (!ids) {
+      queryclient.setQueryData(assetQueryKeys.byIds({ ids }), {
+        DATA: [],
+        COUNT: 0,
+      });
+    }
+  }, [ids, queryclient]);
+
+  return useQuery(assetQueryKeys.byIds({ ids }), assetsByIdsFetcherFn, {
     refetchOnMount: false,
     keepPreviousData: true,
+    refetchInterval: refreshRate ? convertSecondsToMS(refreshRate) : false,
+    refetchIntervalInBackground: false,
   });
 }
+
+const convertSecondsToMS = (seconds: number) => seconds * 1000;
