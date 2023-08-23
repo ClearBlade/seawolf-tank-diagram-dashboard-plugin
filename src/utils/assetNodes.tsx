@@ -12,15 +12,11 @@ const levelGap = 200;
 const horizGap = 240;
 const miniGap = 210;
 
-const getTankFill = (schema?: AssetType['frontend']['schema']) => {
-  const tankLevel = schema.find(
-    (attr) => attr.attribute_name === AttributeNames.Tank_Level
-  );
-  const maxFill = schema.find(
-    (attr) => attr.attribute_name === AttributeNames.Max_Fill
-  );
+const getTankFill = (asset?: Asset['frontend']) => {
+  const tankLevel = asset?.custom_data?.[AttributeNames.Tank_Level];
+  const maxFill = asset?.custom_data?.[AttributeNames.Max_Fill];
   if (typeof tankLevel !== 'number' || typeof maxFill !== 'number') return 0;
-  return tankLevel / maxFill;
+  return (tankLevel / maxFill) * 100;
 };
 
 const levelOneNodes = (
@@ -69,10 +65,8 @@ const levelOneNodes = (
           />
         </Grid>
       ),
+      percentFilled: getTankFill(assets[AssetIds.DiverDuckAST_T100]),
     },
-    percentFilled: getTankFill(
-      assetTypeDict[assets[AssetIds.DiverDuckAST_T100]?.type]?.schema
-    ),
     type: NodeTypes.tankNodeLeftBottom,
   },
   {
@@ -400,10 +394,8 @@ const levelFiveNodes = (
           </Grid>
         </Grid>
       ),
+      percentFilled: getTankFill(assets[AssetIds.RedHeadSWD_LIT100]),
     },
-    percentFilled: getTankFill(
-      assetTypeDict[assets[AssetIds.RedHeadSWD_LIT100]?.type]?.schema
-    ),
     type: NodeTypes.tankNodeTop,
   },
   {
@@ -446,10 +438,8 @@ const levelFiveNodes = (
           </Grid>
         </Grid>
       ),
+      percentFilled: getTankFill(assets[AssetIds.BruinSWD_LIT100]),
     },
-    percentFilled: getTankFill(
-      assetTypeDict[assets[AssetIds.BruinSWD_LIT100]?.type]?.schema
-    ),
     type: NodeTypes.tankNodeTop,
   },
   {
