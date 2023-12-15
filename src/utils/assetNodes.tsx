@@ -290,13 +290,15 @@ const levelFourNodes = (
     data: {
       label: (
         <Grid container direction='column'>
-          <AssetLabel assets={assets} assetId={AssetIds.RedHeadSWD_FIT100} />
-          <AttributeValues
-            assets={assets}
-            assetTypeDict={assetTypeDict}
-            assetId={AssetIds.RedHeadSWD_FIT100}
-            attributeNames={[AttributeNames.Rate, AttributeNames.Total]}
-          />
+          <Grid container item direction='column'>
+            <AssetLabel assets={assets} assetId={AssetIds.RedHeadSWD_FIT100} />
+            <AttributeValues
+              assets={assets}
+              assetTypeDict={assetTypeDict}
+              assetId={AssetIds.RedHeadSWD_FIT100}
+              attributeNames={[AttributeNames.Rate, AttributeNames.Total]}
+            />
+          </Grid>
         </Grid>
       ),
     },
@@ -334,7 +336,30 @@ const levelFourNodes = (
   {
     id: '4-3',
     position: { x: centerHo, y: levelGap * 3 },
-    data: { label: '' },
+    data: {
+      label: (
+        <Grid container direction='column' spacing={1}>
+          <Grid container item direction='column'>
+            <AssetLabel assets={assets} assetId={AssetIds.MallardSWD_PIT100} />
+            <AttributeValues
+              assets={assets}
+              assetTypeDict={assetTypeDict}
+              assetId={AssetIds.MallardSWD_PIT100}
+              attributeNames={[AttributeNames.Pressure]}
+            />
+          </Grid>
+          <Grid container item direction='column'>
+            <AssetLabel assets={assets} assetId={AssetIds.MallardSWD_FIT100} />
+            <AttributeValues
+              assets={assets}
+              assetTypeDict={assetTypeDict}
+              assetId={AssetIds.MallardSWD_FIT100}
+              attributeNames={[AttributeNames.Rate, AttributeNames.Total]}
+            />
+          </Grid>
+        </Grid>
+      ),
+    },
     type: NodeTypes.textNodeTopBottom,
   },
   {
@@ -446,7 +471,51 @@ const levelFiveNodes = (
     id: '5-3',
     position: { x: centerHo, y: levelGap * 4 },
     data: {
-      label: '',
+      label: (
+        <Grid container direction='column' justifyContent='center'>
+          <Grid container item direction='column'>
+            <AssetLabel assets={assets} assetId={AssetIds.MallardSWD_LIT100} />
+            <AttributeValues
+              assets={assets}
+              assetTypeDict={assetTypeDict}
+              assetId={AssetIds.MallardSWD_LIT100}
+              attributeNames={[AttributeNames.Tank_Level]}
+            />
+          </Grid>
+        </Grid>
+      ),
+      textBox: (
+        <Grid container direction='column' justifyContent='center' spacing={1}>
+          <Grid item>
+            <AssetLabel assets={assets} assetId={AssetIds.MallardSWD_PIT200} />
+            <AttributeValues
+              assets={assets}
+              assetTypeDict={assetTypeDict}
+              assetId={AssetIds.MallardSWD_PIT200}
+              attributeNames={[AttributeNames.Pressure]}
+            />
+          </Grid>
+          <Grid item>
+            <AssetLabel assets={assets} assetId={AssetIds.MallardSWD_CV200} />
+            <AttributeValues
+              assets={assets}
+              assetTypeDict={assetTypeDict}
+              assetId={AssetIds.MallardSWD_CV200}
+              attributeNames={[AttributeNames.Valve_Position]}
+            />
+          </Grid>
+          <Grid item>
+            <AssetLabel assets={assets} assetId={AssetIds.MallardSWD_PIT300} />
+            <AttributeValues
+              assets={assets}
+              assetTypeDict={assetTypeDict}
+              assetId={AssetIds.MallardSWD_PIT300}
+              attributeNames={[AttributeNames.Pressure]}
+            />
+          </Grid>
+        </Grid>
+      ),
+      percentFilled: getTankFill(assets[AssetIds.BruinSWD_LIT100]),
     },
     type: NodeTypes.tankNodeTop,
   },
