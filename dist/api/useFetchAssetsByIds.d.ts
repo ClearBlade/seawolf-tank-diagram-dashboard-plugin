@@ -1,21 +1,12 @@
 import { Asset } from '@clearblade/ia-mfe-core';
 import { QueryFunctionContext } from 'react-query';
 import { CbDictionary } from '../types';
-export declare const assetsByIdsFetcherFn: ({ queryKey: [{ params: { ids }, },], }: QueryFunctionContext<ReturnType<typeof assetsByIdsQueryKeys.detail>>) => Promise<{
+import { assetQueryKeys } from './queryKeys';
+export declare const assetsByIdsFetcherFn: ({ queryKey: [{ params: { ids }, },], }: QueryFunctionContext<ReturnType<typeof assetQueryKeys.byIds>>) => Promise<{
     DATA: undefined | CbDictionary<string, Asset['frontend']>;
     COUNT: number;
 }>;
-export declare const assetsByIdsQueryKeys: {
-    detail: (params: {
-        ids: string[];
-    }) => readonly [{
-        readonly scope: "assetsByIds";
-        readonly params: {
-            ids: string[];
-        };
-    }];
-};
-export declare function useFetchAssetsByIds(ids: string[]): import("react-query").UseQueryResult<{
+export declare function useFetchAssetsByIds(ids?: string[]): import("react-query").UseQueryResult<{
     DATA: CbDictionary<string, {
         type: string;
         id: string;

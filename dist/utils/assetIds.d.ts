@@ -20,6 +20,12 @@ export declare enum AssetIds {
     RedHead_SWD_PIT200 = "RedHead_SWD_PIT200",
     RedHeadSWD_CV200 = "RedHeadSWD_CV200",
     BruinSWD_PIT200 = "BruinSWD_PIT200",
-    BruinSWD_CV200 = "BruinSWD_CV200"
+    BruinSWD_CV200 = "BruinSWD_CV200",
+    MallardSWD_PIT100 = "MallardSWD_PIT100",
+    MallardSWD_FIT100 = "MallardSWD_FIT100",
+    MallardSWD_LIT100 = "MallardSWD_LIT100",
+    MallardSWD_PIT200 = "MallardSWD_PIT200",
+    MallardSWD_CV200 = "MallardSWD_CV200",
+    MallardSWD_PIT300 = "MallardSWD_PIT300"
 }
 export declare const selectedAssetIds: AssetIds[];
