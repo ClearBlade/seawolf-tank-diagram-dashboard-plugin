@@ -26,7 +26,7 @@ export enum AssetIds {
   MallardSWD_LIT100 = 'MallardSWD_LIT100',
   MallardSWD_PIT200 = 'MallardSWD_PIT200',
   MallardSWD_CV200 = 'MallardSWD_CV200',
-  MallardSWD_PIT300 = 'dMallardSWD_PIT300',
+  MallardSWD_PIT300 = 'MallardSWD_PIT300',
 }
 
 export const selectedAssetIds = Object.values(AssetIds);
