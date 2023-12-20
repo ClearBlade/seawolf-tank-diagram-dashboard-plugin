@@ -1,15 +1,18 @@
 import { getBasePath } from '@clearblade/ia-mfe-core';
-import { appQueryClient } from '@clearblade/ia-mfe-react';
+// @ts-ignore
+import { appQueryClient, RecoilRoot } from '@clearblade/ia-mfe-react';
 import { QueryClientProvider } from 'react-query';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import DashboardPlugin from './components/DashboardPlugin';
 
 export default function Root() {
   return (
-    <BrowserRouter basename={getBasePath()}>
-      <QueryClientProvider contextSharing client={appQueryClient}>
-        <DashboardPlugin />
-      </QueryClientProvider>
-    </BrowserRouter>
+    <RecoilRoot>
+      <BrowserRouter basename={getBasePath()}>
+        <QueryClientProvider contextSharing client={appQueryClient}>
+          <DashboardPlugin />
+        </QueryClientProvider>
+      </BrowserRouter>
+    </RecoilRoot>
   );
 }
