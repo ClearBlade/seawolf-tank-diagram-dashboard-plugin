@@ -1,5 +1,4 @@
 import { getBasePath } from '@clearblade/ia-mfe-core';
-// @ts-ignore
 import { appQueryClient, RecoilRoot } from '@clearblade/ia-mfe-react';
 import { QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
