@@ -1,9 +1,9 @@
-import { Asset } from '@clearblade/ia-mfe-core';
-import { QueryFunctionContext } from 'react-query';
-import { CbDictionary } from '../types';
-import { assetQueryKeys } from './queryKeys';
+import { Asset } from "@clearblade/ia-mfe-core";
+import { QueryFunctionContext } from "react-query";
+import { CbDictionary } from "../types";
+import { assetQueryKeys } from "./queryKeys";
 export declare const assetsByIdsFetcherFn: ({ queryKey: [{ params: { ids }, },], }: QueryFunctionContext<ReturnType<typeof assetQueryKeys.byIds>>) => Promise<{
-    DATA: undefined | CbDictionary<string, Asset['frontend']>;
+    DATA: undefined | CbDictionary<string, Asset["frontend"]>;
     COUNT: number;
 }>;
 export declare function useFetchAssetsByIds(ids?: string[]): import("react-query").UseQueryResult<{
@@ -14,16 +14,19 @@ export declare function useFetchAssetsByIds(ids?: string[]): import("react-query
         image: string;
         description: string;
         parent: string;
-        owners: string[];
-        latitude: number;
-        longitude: number;
-        last_updated: string;
-        location_updated: string;
         custom_data: {
             [x: string]: string | number | boolean;
             [x: number]: string | number | boolean;
             [x: symbol]: string | number | boolean;
         };
+        last_updated: string;
+        owners: string[];
+        latitude: number;
+        longitude: number;
+        group_id: string;
+        floor_levels: number[];
+        item_id: string;
+        location_updated: string;
         attributes_last_updated: {
             [x: string]: string;
             [x: number]: string;
@@ -37,10 +40,13 @@ export declare function useFetchAssetsByIds(ids?: string[]): import("react-query
         custom_id_1: string;
         custom_id_2: string;
         last_location_updated: string;
-        group_id: string;
         tree_id: string;
         is_root: boolean;
-        item_id: string;
+        attributes_labels: {
+            [x: string]: string;
+            [x: number]: string;
+            [x: symbol]: string;
+        };
     }>;
     COUNT: number;
 }, unknown>;
