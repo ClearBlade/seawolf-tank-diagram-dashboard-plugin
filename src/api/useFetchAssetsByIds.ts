@@ -2,12 +2,12 @@ import {
   Asset,
   createFrontendAssetsQuery,
   fetchAssets,
-} from '@clearblade/ia-mfe-core';
-import { QueryFunctionContext, useQuery, useQueryClient } from 'react-query';
-import { CbDictionary } from '../types';
-import { assetQueryKeys } from './queryKeys';
-import { useEffect } from 'react';
-import useRefreshRateStore from '../stores/useRefreshRateStore';
+} from "@clearblade/ia-mfe-core";
+import { QueryFunctionContext, useQuery, useQueryClient } from "react-query";
+import { CbDictionary } from "../types";
+import { assetQueryKeys } from "./queryKeys";
+import { useEffect } from "react";
+import useRefreshRateStore from "../stores/useRefreshRateStore";
 
 export const assetsByIdsFetcherFn = ({
   queryKey: [
@@ -16,7 +16,7 @@ export const assetsByIdsFetcherFn = ({
     },
   ],
 }: QueryFunctionContext<ReturnType<typeof assetQueryKeys.byIds>>): Promise<{
-  DATA: undefined | CbDictionary<string, Asset['frontend']>;
+  DATA: undefined | CbDictionary<string, Asset["frontend"]>;
   COUNT: number;
 }> => {
   if (ids.length === 0) {
@@ -26,23 +26,23 @@ export const assetsByIdsFetcherFn = ({
     }));
   }
   const query = createFrontendAssetsQuery({
-    Filters: [[{ type: 'default', operator: 'IN', field: 'id', value: ids }]],
+    filters: {
+      ids: ids,
+    },
   });
-  return fetchAssets(new AbortController(), { query }).then(
-    ({ DATA, COUNT }) => {
-      const mappedData = DATA.reduce<CbDictionary<string, Asset['frontend']>>(
-        (acc, curr) => {
-          acc[curr.id] = curr;
-          return acc;
-        },
-        {}
-      );
-      return {
-        DATA: mappedData,
-        COUNT,
-      };
-    }
-  );
+  return fetchAssets(new AbortController(), query).then(({ DATA, COUNT }) => {
+    const mappedData = DATA.reduce<CbDictionary<string, Asset["frontend"]>>(
+      (acc, curr) => {
+        acc[curr.id] = curr;
+        return acc;
+      },
+      {}
+    );
+    return {
+      DATA: mappedData,
+      COUNT,
+    };
+  });
 };
 
 export function useFetchAssetsByIds(ids?: string[]) {
